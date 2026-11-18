@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GhostGMS</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<h1>👻 GhostGMS <span id="ver" class="muted"></span></h1>
+<div id="noksuhint" class="card warn" hidden>Открой через KernelSU-совместимый менеджер: Модули → GhostGMS → WebUI</div>
+
+<div class="card">
+  <div class="row">
+    <h2>Статус</h2>
+    <button id="refreshBtn">Обновить</button>
+  </div>
+  <table id="settingsTable"><tbody></tbody></table>
+  <p id="compCount" class="muted"></p>
+  <pre id="logTail" class="log"></pre>
+</div>
+
+<div class="card">
+  <h2>Основные опции <span class="muted">(config/user_prefs)</span></h2>
+  <div id="prefsBox"></div>
+  <button id="savePrefsBtn" class="primary">💾 Сохранить основные опции</button>
+</div>
+
+<div class="card">
+  <h2>Категории GMS-сервисов <span class="muted">(config/gms_categories)</span></h2>
+  <div id="catsBox"></div>
+  <button id="saveCatsBtn" class="primary">💾 Сохранить категории</button>
+</div>
+
+<div class="card">
+  <h2>Применить сейчас (в реальном времени)</h2>
+  <p class="muted">Действуют по сохранённым настройкам выше.</p>
+  <button id="disableBtn">⛔ Отключить сервисы и логи GMS</button>
+  <button id="enableBtn" class="ok">✅ Вернуть всё: включить все GMS-сервисы</button>
+  <button id="revertSettingsBtn" class="ok">🧾 Вернуть настройки логов Android</button>
+  <button id="applyPropsBtn">⚙️ Применить системные пропсы сейчас</button>
+  <p class="muted">«Вернуть всё» включает все сервисы из списка независимо от категорий. Пропсы ro.* полноценно применяются после перезагрузки.</p>
+</div>
+
+<div class="card">
+  <h2>Восстановление logcat</h2>
+  <p>Модуль подменяет logd/logcat и rc-файлы пустыми заглушками — logcat мёртв до удаления.</p>
+  <button id="rmStubsBtn" class="danger">🗑 Удалить заглушки из модуля (logcat вернётся после перезагрузки)</button>
+  <p class="muted">system.prop-ограничения (logcat.live=disable и др.) остаются, пока модуль установлен.</p>
+</div>
+
+<div id="out"></div>
+</body>
+</html>
